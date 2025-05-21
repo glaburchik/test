@@ -19,7 +19,8 @@ body {
   padding: 20px;
   box-sizing: border-box;
   position: fixed;
-  top: 0; bottom: 0;
+  top: 0;
+  bottom: 0;
   overflow-y: auto;
 }
 
@@ -106,7 +107,7 @@ h2 {
 
 /* Ссылки */
 a {
-  color: #333;
+  color: #46d0bb;
   text-decoration: none;
 }
 
