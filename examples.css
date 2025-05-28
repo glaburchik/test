@@ -1,0 +1,60 @@
+
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+.btn-home {
+  background-color: black;
+  color: white;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn-home:hover {
+  background-color: #444;
+}
+
+.page-title {
+  text-align: center;
+  margin: 30px 0 20px;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.examples-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 0 20px 40px;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+}
+
+.example-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 160px;
+  flex-shrink: 0;
+}
+
+.example-item img {
+  width: 160px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+  display: block;
+}
+
+.example-item figcaption {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.2;
+}
