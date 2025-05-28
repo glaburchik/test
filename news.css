@@ -1,3 +1,4 @@
+/* Базовые стили */
 body {
   margin: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -6,6 +7,7 @@ body {
   line-height: 1.6;
 }
 
+/* Хедер и навигация */
 .header {
   background-color: #fafafa;
   padding: 15px 30px;
@@ -29,17 +31,20 @@ body {
   color: #111;
 }
 
+/* Основные секции */
 .section {
   max-width: 900px;
   margin: 40px auto;
   padding: 0 20px;
 }
 
-h1, h2 {
+h1,
+h2 {
   color: #111;
   margin-bottom: 20px;
 }
 
+/* Новости и карточки */
 .news-block {
   background-color: #fff;
   border: 1px solid #eee;
@@ -58,9 +63,10 @@ h1, h2 {
   font-size: 16px;
 }
 
+/* Видеоконтейнер */
 .video-container {
   position: relative;
-  padding-bottom: 56.25%;
+  padding-bottom: 56.25%; /* 16:9 */
   height: 0;
   overflow: hidden;
   border-radius: 10px;
@@ -76,6 +82,7 @@ h1, h2 {
   height: 100%;
 }
 
+/* Футер */
 .footer {
   text-align: center;
   padding: 20px;

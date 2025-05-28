@@ -1,4 +1,3 @@
-/* Общие стили */
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -11,7 +10,6 @@ body {
   min-height: 100vh;
 }
 
-/* Сайдбар */
 .sidebar {
   width: 260px;
   background-color: #f9f9f9;
@@ -22,9 +20,10 @@ body {
   top: 0;
   bottom: 0;
   overflow-y: auto;
+  transition: left 0.3s ease;
 }
 
-.bot-title {
+.sidebar-header {
   font-size: 24px;
   font-weight: 700;
   margin-bottom: 25px;
@@ -62,7 +61,6 @@ body {
   font-weight: 600;
 }
 
-/* Контент */
 .content {
   margin-left: 260px;
   padding: 30px 40px;
@@ -80,7 +78,6 @@ h2 {
   color: #222;
 }
 
-/* Кнопка */
 .btn-primary {
   background-color: #000;
   color: #fff;
@@ -105,7 +102,6 @@ h2 {
   background-color: #222;
 }
 
-/* Ссылки */
 a {
   color: #46d0bb;
   text-decoration: none;
@@ -115,7 +111,6 @@ a:hover {
   color: #555;
 }
 
-/* Футер */
 footer {
   border-top: 1px solid #ddd;
   padding: 15px 0;
@@ -126,7 +121,193 @@ footer {
   margin-top: 60px;
 }
 
-/* Для плавной прокрутки */
 html {
   scroll-behavior: smooth;
+}
+
+/* Гамбургер и адаптив */
+.mobile-header {
+  display: none;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  padding: 15px 20px;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1100;
+}
+
+#menu-toggle {
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #000;
+  line-height: 1;
+}
+
+.mobile-start-btn {
+  background-color: #000;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-size: 16px;
+  text-decoration: none;
+  display: inline-block;
+  user-select: none;
+}
+
+.mobile-start-btn:hover {
+  background-color: #222;
+}
+
+@media (max-width: 768px) {
+  .mobile-header {
+    display: flex;
+  }
+
+  .sidebar {
+    left: -100%;
+    top: 60px;
+    width: 100%;
+    max-width: 260px;
+    height: calc(100% - 60px);
+    box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+    position: fixed;
+    transition: left 0.3s ease;
+    z-index: 1200;
+    background-color: #f9f9f9;
+  }
+
+  .sidebar.active {
+    left: 0;
+  }
+
+  .content {
+    margin-left: 0;
+    padding: 15px 20px;
+    max-width: 100%;
+  }
+
+  .content .btn-primary {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
+  .sidebar {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+    position: fixed; /* чтоб остался фиксированным */
+  }
+  
+  .nav-list li {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+    animation: none !important;
+  }
+}
+
+/* --- Анимация для заголовка sidebar-header --- */
+.sidebar-header {
+  animation: popIn 1s ease forwards;
+  transform-origin: center;
+  box-shadow: 0 0 0 rgba(0,0,0,0);
+  transition: box-shadow 0.3s ease;
+}
+
+.sidebar-header:hover {
+  box-shadow: 0 4px 15px rgba(70, 208, 187, 0.5);
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* --- Анимация для кнопки .btn-primary --- */
+.btn-primary {
+  animation: pulseGlow 2s ease-in-out infinite;
+  transition: box-shadow 0.3s ease;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 0 15px 3px #46d0bb;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 10px 0 rgba(70, 208, 187, 0.6);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 25px 6px rgba(70, 208, 187, 0.9);
+    transform: scale(1.05);
+  }
+}
+
+/* Писал ChatGPT: JS related styles and animations */
+
+/* Анимация для бокового меню */
+.sidebar {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.sidebar.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Анимация появления пунктов меню по очереди */
+.nav-list li {
+  opacity: 0;
+  transform: translateX(-15px);
+  animation-fill-mode: forwards;
+}
+
+.sidebar.active .nav-list li {
+  animation-name: fadeInSlide;
+  animation-duration: 0.4s;
+  animation-timing-function: ease-out;
+}
+
+.nav-list li:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.nav-list li:nth-child(2) {
+  animation-delay: 0.12s;
+}
+.nav-list li:nth-child(3) {
+  animation-delay: 0.19s;
+}
+.nav-list li:nth-child(4) {
+  animation-delay: 0.26s;
+}
+.nav-list li:nth-child(5) {
+  animation-delay: 0.33s;
+}
+.nav-list li:nth-child(6) {
+  animation-delay: 0.40s;
+}
+.nav-list li:nth-child(7) {
+  animation-delay: 0.47s;
+}
+.nav-list li:nth-child(8) {
+  animation-delay: 0.54s;
+}
+
+@keyframes fadeInSlide {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
